@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleResponse(res) {
         const div = document.createElement('div');
-        div.textContent = `${res.response}`;
+        const timestamps = res.response;
+        div.textContent = `Warning! Triggers found at ${timestamps[0]} and ${timestamps[1]}`;
         document.body.appendChild(div);
     }
 }, false);
