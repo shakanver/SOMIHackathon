@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleResponse(res) {
         const div = document.createElement('div');
         const timestamps = res.response;
-        div.textContent = `Warning! Triggers found at ${timestamps[0]} and ${timestamps[1]}`;
+        div.textContent = `Warning! Potential triggers found at `;
         document.body.appendChild(div);
+        for(i = 0; i < 2; i++) {
+            let time = document.createElement('div');
+            time.textContent = timestamps[i];
+            document.body.appendChild(time);
+
+        }
     }
 }, false);
