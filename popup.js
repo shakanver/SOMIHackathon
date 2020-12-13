@@ -9,15 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleResponse(res) {
-        const div = document.createElement('div');
-        const timestamps = res.response;
-        div.textContent = `Warning! Potential triggers found at `;
-        document.body.appendChild(div);
-        for(i = 0; i < 2; i++) {
-            let time = document.createElement('div');
-            time.textContent = timestamps[i];
-            document.body.appendChild(time);
-
+        const status = res.status;
+        const response = res.response;
+        if(status === "none") {
+            let div = document.createElement('div');
+            div.textContent = "No video found on this page";
+            document.body.appendChild(div);
+        }else {
+            let div = document.createElement('div');
+            div.textContent = "Warning! Potential triggers found at:"
+            document.body.appendChild(div);
+            for(i = 0; i < response.length; i++) {
+                let time = document.createElement('div');
+                time.textContent = response[i];
+                document.body.appendChild(time);
+            }
         }
     }
 }, false);
